@@ -184,11 +184,14 @@ pasado_num = valor_pasado(pasado);
 
 probabilidad_convertirse = calculo_probabilidad_convertirse(voluntad_num, pasado_num, midiclorianos, influencia_padawan);
 
-printf("Probabilidad de convertirse: %f\n", probabilidad_convertirse);
+printf("Probabilidad de convertirse al lado oscuro: %f\n", probabilidad_convertirse);
 
 tiempo_jedi = (int)calculo_convertirse_jedi(voluntad_num, influencia_padawan);
 
 printf("En %f en meses se convertira en jedi\n ", tiempo_jedi);
+
+if (probabilidad_convertirse > 85)
+printf("Transmite lo que has aprendido: fuerza, maestria; pero insensates, debilidad, fracaso tambien. ¡Si, fracaso sobre todo! El mejor profesor, el fracaso es.\n By Master Yoda\n"); 
 
 
 return 0;
