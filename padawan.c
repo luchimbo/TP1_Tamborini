@@ -14,11 +14,14 @@ const char DEF_VOLUNTAD = 'x';
 #define VOLUNTAD_ENORME 'e'
 #define VOLUNTAD_PELIGROSA 'p'
 
+const float DEF_VOLUNTAD_NUM = 2.234F;
+
 const char DEF_PASADO = 'z';
 #define PASADO_BUENO 'b'
 #define PASADO_NORMAL 'n'
 #define PASADO_TRAGICO 't'
 
+const float DEF_PASADO_NUM = 3.543F;
 
 const float DEF_MIDICLORIANOS = 1.346345F;
 const float MIN_MIDICLORIANOS = 100.0F;
@@ -28,12 +31,12 @@ const float MAX_MIDICLORIANOS = 2999.9F;
 const float INFLUENCIA = 3.4F;
 const float OSCURIDAD = 0.001117684315F;
 
-const float MULT_VOL_FLOJA_BUENA = 10.3F;
-const float MULT_VOL_MED_ALTA = 54.5F;
-const float MULT_VOL_ENOR_PEL = 103.4F;
+const float VALOR_VOL_FLOJA_BUENA = 10.3F;
+const float VALOR_VOL_MED_ALTA = 54.5F;
+const float VALOR_VOL_ENOR_PEL = 103.4F;
 
-const float MULT_PAS_NORM_TRAGICO = 0.4F;
-const float MULT_PAS_BUENO = 1.5F;
+const float VALOR_PAS_NORM_TRAGICO = 0.4F;
+const float VALOR_PAS_BUENO = 1.5F;
 
 void comienzo(){
 	printf(MSJ_COMIENZO);
@@ -76,15 +79,64 @@ char recibir_pasado()
 {
 	char pasado_recibido = DEF_PASADO;
 	printf(MSJ_PASADO);
-	scanf(" %c", pasado_recibido);
+	scanf(" %c", &pasado_recibido);
 
 	while ((pasado_recibido != PASADO_BUENO) && (pasado_recibido != PASADO_NORMAL) && (pasado_recibido != PASADO_TRAGICO))
 	{
 	printf("No entiendo lo que estas diciendo. Intente de nuevo\n");
 	printf(MSJ_PASADO);
-	scanf(" %c", pasado_recibido);
+	scanf(" %c", &pasado_recibido);
 	}
 	return pasado_recibido;
+}
+
+float calculo_probabilidad_convertirse(char voluntad, char pasado, float midiclorianos){
+	float voluntad_num = DEF_VOLUNTAD_NUM;
+	float pasado_num = DEF_PASADO_NUM;
+	float influencia_padawan;
+	float probabilidad_convertirse;
+
+	switch (voluntad){
+	case VOLUNTAD_ALTA:
+		voluntad_num = VALOR_VOL_MED_ALTA;
+		break;
+	case VOLUNTAD_FLOJA:
+		voluntad_num = VALOR_VOL_FLOJA_BUENA;
+		break;
+	case VOLUNTAD_BUENA:
+		voluntad_num = VALOR_VOL_FLOJA_BUENA;
+		break;
+	case VOLUNTAD_MEDIANA:
+		voluntad_num = VALOR_VOL_MED_ALTA;
+		break;
+	case VOLUNTAD_ENORME:
+		voluntad_num = VALOR_VOL_ENOR_PEL;
+		break;
+	case VOLUNTAD_PELIGROSA:
+		voluntad_num = VALOR_VOL_ENOR_PEL;
+		break;
+	}
+
+	switch(pasado){
+	case PASADO_BUENO:
+		pasado_num = VALOR_PAS_BUENO;
+	case PASADO_TRAGICO:
+		pasado_num = VALOR_PAS_NORM_TRAGICO;
+	case PASADO_NORMAL:
+		pasado_num = VALOR_PAS_NORM_TRAGICO;
+	}
+ 	
+ 	influencia_padawan = midiclorianos * INFLUENCIA;
+
+ 	probabilidad_convertirse = voluntad_num+(OSCURIDAD*influencia_padawan)/pasado_num;
+
+ 	return probabilidad_convertirse;
+}
+
+float calculo_convertirse_jedi(float voluntad_num){
+	float voluntad_jedi = ((voluntad_num*20/100)+voluntad_num);
+
+	return voluntad_jedi;
 }
 
 
@@ -93,7 +145,8 @@ int main(){
 float midiclorianos = DEF_MIDICLORIANOS;
 char voluntad = DEF_VOLUNTAD;
 char pasado = DEF_PASADO;
-
+float probabilidad_convertirse;
+float tiempo_restante_jedi;
 
 comienzo();
 
@@ -108,6 +161,13 @@ printf("Voluntad recibida: %c\n", voluntad);
 pasado = recibir_pasado();
 
 printf ("Pasado recibido: %c\n", pasado);
+
+probabilidad_convertirse = calculo_probabilidad_convertirse(voluntad, pasado, midiclorianos);
+
+printf("Probabilidad de convertirse: %f", probabilidad_convertirse);
+
+tiempo_restante_jedi = calculo_convertirse_jedi();
+printf("Voluntad 20: %f", tiempo_restante_jedi);
 
 
 return 0;
