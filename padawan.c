@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MSJ_COMIENZO "Hola joven Padawan, voy a hacerte una serie de preguntas para saber mas de vos\n"
+#define MSJ_COMIENZO "Hola joven Padawan, voy a hacerte una serie de preguntas para saber mas de ti\n"
 #define MSJ_MIDICLORIANOS "Cual es tu nivel de midiclorianos en tu organismo?\nEl nivel tiene que encontrarse en el rango de 100.0 y 2999.9\n"
 #define MSJ_VOLUNTAD "Como es tu voluntad?\n Floja [f], Buena, [b], Mediana [m], Alta [a], Enorme [e], Peligrosa [p]\n"
 #define MSJ_PASADO "Como ha sido tu pasado?\nBueno [b], Normal [n] o Tragico [t]\n"
@@ -168,27 +168,30 @@ midiclorianos = recibir_midiclorianos();
 
 float influencia_padawan = midiclorianos * INFLUENCIA;
 
-printf("Midiclorianos recibidos = %f\n", midiclorianos);
-
 voluntad = recibir_voluntad();
 
-printf("Voluntad recibida: %c\n", voluntad);
-
 pasado = recibir_pasado();
-
-printf ("Pasado recibido: %c\n", pasado);
 
 voluntad_num = valor_voluntad(voluntad); 
 
 pasado_num = valor_pasado(pasado);
 
+printf("Ya he terminado con tu analisis. Ahora debes hablar con tu maestro\n");
+
+printf("Midiclorianos recibidos = %f\n", midiclorianos);
+
+printf("Voluntad recibida: %c\n", voluntad);
+
+printf ("Pasado recibido: %c\n", pasado);
+
 probabilidad_convertirse = calculo_probabilidad_convertirse(voluntad_num, pasado_num, midiclorianos, influencia_padawan);
 
-printf("Probabilidad de convertirse al lado oscuro: %f\n", probabilidad_convertirse);
+printf("Probabilidad de convertirse al lado oscuro:%f%c\n", probabilidad_convertirse, 37);
 
 tiempo_jedi = (int)calculo_convertirse_jedi(voluntad_num, influencia_padawan);
 
-printf("En %f en meses se convertira en jedi\n ", tiempo_jedi);
+printf("En %f meses se convertira en jedi\n ", tiempo_jedi);
+
 
 if (probabilidad_convertirse > 85)
 printf("Transmite lo que has aprendido: fuerza, maestria; pero insensates, debilidad, fracaso tambien. ¡Si, fracaso sobre todo! El mejor profesor, el fracaso es.\n By Master Yoda\n"); 
