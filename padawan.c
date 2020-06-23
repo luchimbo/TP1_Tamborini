@@ -194,7 +194,7 @@ printf("En %f meses se convertira en jedi\n ", tiempo_jedi);
 
 
 if (probabilidad_convertirse > 85)
-printf("Transmite lo que has aprendido: fuerza, maestria; pero insensates, debilidad, fracaso tambien. ¡Si, fracaso sobre todo! El mejor profesor, el fracaso es.\n By Master Yoda\n"); 
+printf("Transmite lo que has aprendido: fuerza, maestria; pero insensatez, debilidad, fracaso tambien. ¡Si, fracaso sobre todo! El mejor profesor, el fracaso es.\n By Master Yoda\n"); 
 
 
 return 0;
