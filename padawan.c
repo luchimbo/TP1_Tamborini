@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 #define MSJ_COMIENZO "Hola joven Padawan, voy a hacerte una serie de preguntas para saber mas de ti\n"
 #define MSJ_MIDICLORIANOS "Cual es tu nivel de midiclorianos en tu organismo?\nEl nivel tiene que encontrarse en el rango de 100.0 y 2999.9\n"
@@ -114,7 +115,7 @@ float valor_voluntad(char voluntad)
 			voluntad_num_recibido = VALOR_VOL_ENOR_PEL;
 			break;
 	}
-return voluntad_num_recibido;
+	return voluntad_num_recibido;
 }
 
 float valor_pasado (char pasado)
@@ -128,7 +129,7 @@ float valor_pasado (char pasado)
 	case PASADO_NORMAL:
 		pasado_num_recibido = VALOR_PAS_NORM_TRAGICO;
 	}
-return pasado_num_recibido;
+	return pasado_num_recibido;
 }
 
 
@@ -157,8 +158,8 @@ int main(){
 float midiclorianos = DEF_MIDICLORIANOS;
 char voluntad = DEF_VOLUNTAD;
 char pasado = DEF_PASADO;
-float voluntad_num;
-float pasado_num;
+float voluntad_num = DEF_VOLUNTAD_NUM;
+float pasado_num = DEF_PASADO_NUM;
 float probabilidad_convertirse;
 float tiempo_jedi;
 
@@ -188,9 +189,9 @@ probabilidad_convertirse = calculo_probabilidad_convertirse(voluntad_num, pasado
 
 printf("Probabilidad de convertirse al lado oscuro:%f%c\n", probabilidad_convertirse, 37);
 
-tiempo_jedi = (int)calculo_convertirse_jedi(voluntad_num, influencia_padawan);
+tiempo_jedi = calculo_convertirse_jedi(voluntad_num, influencia_padawan);
 
-printf("En %f meses se convertira en jedi\n ", tiempo_jedi);
+printf("En %f meses se convertira en jedi\n ", round(tiempo_jedi));
 
 
 if (probabilidad_convertirse > 85)
