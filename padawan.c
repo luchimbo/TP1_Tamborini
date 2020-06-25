@@ -40,7 +40,10 @@ const float VALOR_PAS_NORM_TRAGICO = 0.4F;
 const float VALOR_PAS_BUENO = 1.5F;
 
 const float DEF_PROBABILIDAD_CONVERTIRSE = 0.0F;
+const int DEF_PORCENTAJE_CONVERTIRSE_MSJ = 85;
+
 const int DEF_TIEMPO_JEDI = 1;
+
 
 void comienzo(){
 	printf(MSJ_COMIENZO);
@@ -55,9 +58,9 @@ float recibir_midiclorianos()
 
 	while ((midiclorianos_recibido < MIN_MIDICLORIANOS) || (midiclorianos_recibido > MAX_MIDICLORIANOS))
 	{
-		printf("No se encuentra dentro del rango. Intente de nuevo\n");
-		printf(MSJ_MIDICLORIANOS);
-		scanf("%f", &midiclorianos_recibido);
+	printf("No se encuentra dentro del rango. Intente de nuevo\n");
+	printf(MSJ_MIDICLORIANOS);
+	scanf("%f", &midiclorianos_recibido);
 	}
 
 	return midiclorianos_recibido;
@@ -180,24 +183,24 @@ voluntad_num = valor_voluntad(voluntad);
 
 pasado_num = valor_pasado(pasado);
 
-printf("Ya he terminado con tu analisis. Ahora debes hablar con tu maestro\n");
+printf("\nYa he terminado con tu analisis. Ahora debes hablar con tu maestro\n");
 
-printf("Midiclorianos recibidos = %f\n", midiclorianos);
+printf("\nMidiclorianos recibidos = %f\n", midiclorianos);
 
-printf("Voluntad recibida: %c\n", voluntad);
+printf("\nVoluntad recibida: %c\n", voluntad);
 
-printf ("Pasado recibido: %c\n", pasado);
+printf ("\nPasado recibido: %c\n", pasado);
 
 probabilidad_convertirse = calculo_probabilidad_convertirse(voluntad_num, pasado_num, midiclorianos, influencia_padawan);
 
-printf("Probabilidad de convertirse al lado oscuro:%f%c\n", probabilidad_convertirse, 37);
+printf("\nProbabilidad de convertirse al lado oscuro:%f%c\n", probabilidad_convertirse, 37);
 
 tiempo_jedi = (int)calculo_convertirse_jedi(voluntad_num, influencia_padawan);
 
-printf("En %f meses se convertira en jedi\n ", tiempo_jedi);
+printf("\nEn %f meses se convertira en jedi\n ", tiempo_jedi);
 
-if (probabilidad_convertirse > 85)
-printf("Transmite lo que has aprendido: fuerza, maestria; pero insensatez, debilidad, fracaso tambien. ¡Si, fracaso sobre todo! El mejor profesor, el fracaso es.\n By Master Yoda\n"); 
+if (probabilidad_convertirse > DEF_PORCENTAJE_CONVERTIRSE_MSJ)
+printf("\nTransmite lo que has aprendido: fuerza, maestria; pero insensatez, debilidad, fracaso tambien. ¡Si, fracaso sobre todo! El mejor profesor, el fracaso es.\n By Master Yoda\n"); 
 
 return 0;
 }
