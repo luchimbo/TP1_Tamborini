@@ -39,6 +39,9 @@ const float VALOR_VOL_ENOR_PEL = 103.4F;
 const float VALOR_PAS_NORM_TRAGICO = 0.4F;
 const float VALOR_PAS_BUENO = 1.5F;
 
+const float DEF_PROBABILIDAD_CONVERTIRSE = 0.0F;
+const int DEF_TIEMPO_JEDI = 1;
+
 void comienzo(){
 	printf(MSJ_COMIENZO);
 }
@@ -160,8 +163,8 @@ char voluntad = DEF_VOLUNTAD;
 char pasado = DEF_PASADO;
 float voluntad_num = DEF_VOLUNTAD_NUM;
 float pasado_num = DEF_PASADO_NUM;
-float probabilidad_convertirse;
-float tiempo_jedi;
+float probabilidad_convertirse = DEF_PROBABILIDAD_CONVERTIRSE;
+float tiempo_jedi = DEF_TIEMPO_JEDI;
 
 comienzo();
 
@@ -189,10 +192,9 @@ probabilidad_convertirse = calculo_probabilidad_convertirse(voluntad_num, pasado
 
 printf("Probabilidad de convertirse al lado oscuro:%f%c\n", probabilidad_convertirse, 37);
 
-tiempo_jedi = calculo_convertirse_jedi(voluntad_num, influencia_padawan);
+tiempo_jedi = (int)calculo_convertirse_jedi(voluntad_num, influencia_padawan);
 
-printf("En %f meses se convertira en jedi\n ", round(tiempo_jedi));
-
+printf("En %f meses se convertira en jedi\n ", tiempo_jedi);
 
 if (probabilidad_convertirse > 85)
 printf("Transmite lo que has aprendido: fuerza, maestria; pero insensatez, debilidad, fracaso tambien. ¡Si, fracaso sobre todo! El mejor profesor, el fracaso es.\n By Master Yoda\n"); 
