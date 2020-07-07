@@ -6,7 +6,6 @@
 #define MSJ_VOLUNTAD "Como es tu voluntad?\n Floja [f], Buena, [b], Mediana [m], Alta [a], Enorme [e], Peligrosa [p]\n"
 #define MSJ_PASADO "Como ha sido tu pasado?\nBueno [b], Normal [n] o Tragico [t]\n"
 
-
 const char DEF_VOLUNTAD = 'x';
 #define VOLUNTAD_FLOJA 'f'
 #define VOLUNTAD_BUENA 'b'
@@ -97,7 +96,7 @@ char recibir_pasado()
 	return pasado_recibido;
 }
 
-float valor_voluntad(char voluntad)
+float valor_num_voluntad(char voluntad)
 {
 	float voluntad_num_recibido = DEF_VOLUNTAD_NUM;
 	switch (voluntad)
@@ -124,7 +123,7 @@ float valor_voluntad(char voluntad)
 	return voluntad_num_recibido;
 }
 
-float valor_pasado (char pasado)
+float valor_num_pasado (char pasado)
 {
 	float pasado_num_recibido = DEF_PASADO_NUM;
 	switch(pasado){
@@ -179,9 +178,9 @@ voluntad = recibir_voluntad();
 
 pasado = recibir_pasado();
 
-voluntad_num = valor_voluntad(voluntad); 
+voluntad_num = valor_num_voluntad(voluntad); 
 
-pasado_num = valor_pasado(pasado);
+pasado_num = valor_num_pasado(pasado);
 
 printf("\nYa he terminado con tu analisis. Ahora debes hablar con tu maestro\n");
 
