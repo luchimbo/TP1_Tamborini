@@ -196,7 +196,7 @@ printf("\nProbabilidad de convertirse al lado oscuro:%f%c\n", probabilidad_conve
 
 tiempo_jedi = (int)calculo_convertirse_jedi(voluntad_num, influencia_padawan);
 
-printf("\nEn %f meses se convertira en jedi\n ", tiempo_jedi);
+printf("\nEn %.0f meses se convertira en jedi\n ", tiempo_jedi);
 
 if (probabilidad_convertirse > DEF_PORCENTAJE_CONVERTIRSE_MSJ)
 printf("\nTransmite lo que has aprendido: fuerza, maestria; pero insensatez, debilidad, fracaso tambien. ¡Si, fracaso sobre todo! El mejor profesor, el fracaso es.\n By Master Yoda\n"); 
