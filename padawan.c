@@ -40,7 +40,7 @@ const float VALOR_PAS_BUENO = 1.5F;
 const float DEF_PROBABILIDAD_CONVERTIRSE = 0.0F;
 const int DEF_PORCENTAJE_CONVERTIRSE_MSJ = 85;
 
-const int DEF_TIEMPO_JEDI = 1;
+const float DEF_TIEMPO_JEDI = 1.0F;
 
 
 void comienzo(){
