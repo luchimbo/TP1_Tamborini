@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 
 #define MSJ_COMIENZO "Hola joven Padawan, voy a hacerte una serie de preguntas para saber mas de ti\n"
 #define MSJ_MIDICLORIANOS "Cual es tu nivel de midiclorianos en tu organismo?\nEl nivel tiene que encontrarse en el rango de 100.0 y 2999.9\n"
